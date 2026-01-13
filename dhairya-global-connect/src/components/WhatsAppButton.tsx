@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import whatsappLogo from '@/assets/png-clipart-whatsapp-logo-whatsapp-computer-icons-telephone-call-whatsapp-grass-internet.png';
 
-const WHATSAPP_NUMBERS = ['+917068683737', '+919967514905'];
+const WHATSAPP_NUMBERS = ['+919967514905'];
 const PREFILLED_MESSAGE = encodeURIComponent("Hello, I'm interested in discussing agricultural commodity imports.");
 
 export default function WhatsAppButton() {
@@ -23,10 +23,10 @@ export default function WhatsAppButton() {
       aria-label="Contact us on WhatsApp"
     >
       <img src={whatsappLogo} alt="WhatsApp" className="w-8 h-8 object-contain" />
-      
+
       {/* Pulse animation */}
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
-      
+
       {/* Tooltip */}
       <motion.div
         initial={{ opacity: 0, x: 10 }}

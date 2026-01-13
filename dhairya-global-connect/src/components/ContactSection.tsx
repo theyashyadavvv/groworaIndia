@@ -21,14 +21,14 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // EmailJS configuration from environment variables
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      
+
       // Debug: Check if env variables are loaded
       console.log('EmailJS Config:', {
         serviceId,
@@ -36,7 +36,7 @@ export default function ContactSection() {
         autoReplyTemplateId,
         publicKey: publicKey ? '✓ Loaded' : '✗ Missing'
       });
-      
+
       // Prepare email data for your inbox
       const templateParams = {
         from_name: formState.name,
@@ -47,7 +47,7 @@ export default function ContactSection() {
         message: formState.message || 'No message',
         to_email: 'info@groworaindia.com',
       };
-      
+
       // Send email to you (info@groworaindia.com)
       await emailjs.send(
         serviceId,
@@ -55,28 +55,28 @@ export default function ContactSection() {
         templateParams,
         publicKey
       );
-      
+
       // Send auto-reply thank you email to customer
       const autoReplyParams = {
         to_name: formState.name,
         to_email: formState.email,
         from_name: 'GROWORA Team',
       };
-      
+
       await emailjs.send(
         serviceId,
         autoReplyTemplateId,
         autoReplyParams,
         publicKey
       );
-      
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast({
         title: "Inquiry Sent Successfully!",
         description: "We've received your inquiry and will respond within 24 hours.",
       });
-      
+
       // Reset form
       setFormState({
         name: '',
@@ -103,7 +103,7 @@ export default function ContactSection() {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hello, I'm interested in discussing agricultural commodity imports.");
-    window.open(`https://wa.me/917068683737?text=${message}`, '_blank');
+    window.open(`https://wa.me/919967514905?text=${message}`, '_blank');
   };
 
   return (
@@ -138,7 +138,7 @@ export default function ContactSection() {
             {/* Contact Details */}
             <div className="space-y-4">
               <motion.a
-                href="tel:+917068683737"
+                href="tel:+919967514905"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -151,7 +151,7 @@ export default function ContactSection() {
                 <div>
                   <div className="text-muted-foreground text-sm font-ui">Call Us</div>
                   <div className="text-foreground font-medium">+91 7068683737</div>
-                  <div className="text-foreground font-medium">+91 99675 14905</div>
+                  <div className="text-foreground font-medium">+91 9967514905</div>
                 </div>
               </motion.a>
 
@@ -214,141 +214,141 @@ export default function ContactSection() {
           >
             <div className="glass-card p-8 lg:p-10 relative">
               <div className="relative z-10">
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
-                >
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-orange flex items-center justify-center">
-                    <CheckCircle className="w-10 h-10 text-primary-foreground" />
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
-                    Thank You!
-                  </h3>
-                  <p className="text-muted-foreground font-body">
-                    We've received your inquiry and will respond within 24 hours.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        value={formState.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formState.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
-                        placeholder="john@company.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formState.company}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
-                        placeholder="Your Company"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                        Product Interest
-                      </label>
-                      <select
-                        name="product"
-                        value={formState.product}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
-                      >
-                        <option value="">Select Product</option>
-                        <option value="rice">Rice</option>
-                        <option value="sugar">Sugar</option>
-                        <option value="wheat">Wheat</option>
-                        <option value="maize">Maize</option>
-                        <option value="pulses">Pulses</option>
-                        <option value="spices">Spices</option>
-                        <option value="multiple">Multiple Products</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                      Quantity (MT)
-                    </label>
-                    <input
-                      type="text"
-                      name="quantity"
-                      value={formState.quantity}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
-                      placeholder="e.g., 100 MT"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-ui font-medium text-foreground mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      rows={4}
-                      className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all resize-none"
-                      placeholder="Tell us about your requirements..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="hero"
-                    size="xl"
-                    className="w-full group"
-                    disabled={isSubmitting}
+                {isSubmitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-12"
                   >
-                    {isSubmitting ? (
-                      <motion.span
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                        className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-orange flex items-center justify-center">
+                      <CheckCircle className="w-10 h-10 text-primary-foreground" />
+                    </div>
+                    <h3 className="font-heading text-2xl font-bold text-foreground mb-2">
+                      Thank You!
+                    </h3>
+                    <p className="text-muted-foreground font-body">
+                      We've received your inquiry and will respond within 24 hours.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                          Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={formState.name}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formState.email}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
+                          placeholder="john@company.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                          Company
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formState.company}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
+                          placeholder="Your Company"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                          Product Interest
+                        </label>
+                        <select
+                          name="product"
+                          value={formState.product}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
+                        >
+                          <option value="">Select Product</option>
+                          <option value="rice">Rice</option>
+                          <option value="sugar">Sugar</option>
+                          <option value="wheat">Wheat</option>
+                          <option value="maize">Maize</option>
+                          <option value="pulses">Pulses</option>
+                          <option value="spices">Spices</option>
+                          <option value="multiple">Multiple Products</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                        Quantity (MT)
+                      </label>
+                      <input
+                        type="text"
+                        name="quantity"
+                        value={formState.quantity}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all"
+                        placeholder="e.g., 100 MT"
                       />
-                    ) : (
-                      <>
-                        Send Inquiry
-                        <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-ui font-medium text-foreground mb-2">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formState.message}
+                        onChange={handleChange}
+                        rows={4}
+                        className="w-full px-4 py-3 bg-background border border-border rounded-xl font-body focus:outline-none focus:ring-2 focus:ring-orange transition-all resize-none"
+                        placeholder="Tell us about your requirements..."
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      variant="hero"
+                      size="xl"
+                      className="w-full group"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <motion.span
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                          className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                        />
+                      ) : (
+                        <>
+                          Send Inquiry
+                          <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                )}
               </div>
             </div>
           </motion.div>

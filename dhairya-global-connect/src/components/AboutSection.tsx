@@ -5,8 +5,7 @@ import { Globe, Users, Award, Truck, Shield, Leaf, Handshake, TrendingUp } from 
 const stats = [
   { icon: Globe, value: 20, suffix: '+', label: 'Countries Served', color: 'orange' },
   { icon: Users, value: 50, suffix: '+', label: 'Global Markets', color: 'navy' },
-  { icon: Award, value: 5, suffix: '+', label: 'Years Experience', color: 'orange' },
-  { icon: Truck, value: 58000, suffix: '+', label: 'MT Exported', color: 'navy' },
+  { icon: Award, value: 2, suffix: '+', label: 'Years Experience', color: 'orange' },
 ];
 
 const features = [
@@ -53,7 +52,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Diagonal background */}
-      <div 
+      <div
         className="absolute inset-0 bg-gradient-navy"
         style={{
           clipPath: 'polygon(0 5%, 100% 0%, 100% 95%, 0% 100%)',
@@ -72,14 +71,12 @@ export default function AboutSection() {
               transition={{ delay: i * 0.1 }}
               className="glass-card p-6 lg:p-8 text-center group hover:shadow-card-hover transition-all duration-300"
             >
-              <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
-                stat.color === 'orange' ? 'bg-gradient-orange' : 'bg-gradient-navy'
-              } group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center ${stat.color === 'orange' ? 'bg-gradient-orange' : 'bg-gradient-navy'
+                } group-hover:scale-110 transition-transform duration-300`}>
                 <stat.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <div className={`font-heading text-3xl lg:text-4xl font-bold mb-2 ${
-                stat.color === 'orange' ? 'text-gradient-orange' : 'text-navy'
-              }`}>
+              <div className={`font-heading text-3xl lg:text-4xl font-bold mb-2 ${stat.color === 'orange' ? 'text-gradient-orange' : 'text-navy'
+                }`}>
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-muted-foreground font-ui text-sm">
@@ -108,13 +105,13 @@ export default function AboutSection() {
 
             <div className="space-y-4 text-primary-foreground/80 font-body text-lg leading-relaxed">
               <p>
-                GROWORA is a leading Indian agricultural commodity export company, specializing in premium rice, sugar, wheat, maize, pulses, and spices. With over 5 years of experience, we have established ourselves as a trusted partner for importers, distributors, and food businesses across 20+ countries.
+                GROWORA is a leading Indian agricultural commodity export company, specializing in premium rice, sugar, wheat, maize, pulses, and spices. With over 2 years of experience, we have established ourselves as a trusted partner for importers, distributors, and food businesses across 20+ countries.
               </p>
               <p>
                 Our mission is simple: to connect India's agricultural abundance with global demand through reliable supply chains, competitive pricing, and uncompromising quality standards.
               </p>
               <p>
-                We work directly with farmer cooperatives and processing units across India's most fertile regions — from Punjab's basmati belt to Gujarat's groundnut farms — ensuring traceability, freshness, and fair trade practices at every step.
+                We work directly with farmer cooperatives and processing units across India's most fertile regions — from Punjab's basmati belt to Maharashtra’s sugarcane heartland and sugar mills — ensuring traceability, freshness, and fair trade practices at every step.
               </p>
             </div>
 
@@ -181,7 +178,6 @@ export default function AboutSection() {
                   'Flexible MOQ Options',
                   'Complete Documentation',
                   'Quality Certifications',
-                  'Dedicated Account Manager',
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-muted-foreground text-sm">
                     <span className="text-orange">✓</span>

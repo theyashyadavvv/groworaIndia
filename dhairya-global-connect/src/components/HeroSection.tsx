@@ -131,8 +131,7 @@ export default function HeroSection() {
             >
               {[
                 { value: '20+', label: 'Countries' },
-                { value: '58K+', label: 'MT Annually' },
-                { value: '5+', label: 'Years Experience' },
+                { value: '2+', label: 'Years Experience' },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
                   <div className="font-heading text-3xl lg:text-4xl font-bold text-gradient-orange">

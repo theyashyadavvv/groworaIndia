@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-primary-foreground relative overflow-hidden">
       {/* Background decoration */}
-      <div 
+      <div
         className="absolute top-0 right-0 w-1/3 h-full opacity-10"
         style={{
           background: 'linear-gradient(135deg, transparent 30%, hsl(24, 100%, 50%) 100%)',
@@ -54,15 +54,15 @@ export default function Footer() {
               viewport={{ once: true }}
             />
             <p className="text-primary-foreground/70 font-body max-w-sm">
-              Your trusted partner for premium agricultural commodity exports from India. 
+              Your trusted partner for premium agricultural commodity exports from India.
               Quality assured, globally delivered.
             </p>
-            
+
             {/* Contact */}
             <div className="space-y-3">
-              <a href="tel:+917068683737" className="flex items-center gap-3 text-primary-foreground/80 hover:text-orange transition-colors">
+              <a href="tel:+919967514905" className="flex items-center gap-3 text-primary-foreground/80 hover:text-orange transition-colors">
                 <Phone className="w-4 h-4" />
-                <span className="font-body text-sm">+91 7068683737 / +91 99675 14905</span>
+                <span className="font-body text-sm">+91 7068683737 / +91 9967514905</span>
               </a>
               <div className="flex items-start gap-3 text-primary-foreground/80">
                 <Mail className="w-4 h-4 mt-0.5" />
@@ -114,7 +114,7 @@ export default function Footer() {
           <p className="text-primary-foreground/60 text-sm font-body">
             © {new Date().getFullYear()} GROWORA. All rights reserved.
           </p>
-          
+
           <div className="flex items-center gap-6">
             <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm font-body transition-colors">
               Privacy Policy
@@ -123,7 +123,7 @@ export default function Footer() {
               Terms of Service
             </a>
           </div>
-          
+
           <button
             onClick={scrollToTop}
             className="w-10 h-10 rounded-xl bg-orange flex items-center justify-center hover:bg-orange-light transition-colors group"

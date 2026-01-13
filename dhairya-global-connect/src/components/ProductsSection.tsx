@@ -34,15 +34,6 @@ const productCategories = [
 				types: ['Sona Masoori', 'IR-64', 'PR-11', 'Parboiled Rice'],
 				packaging: '25kg, 50kg PP bags',
 			},
-			{
-				name: 'Specialty Rice',
-				types: [
-					'Brown Rice',
-					'Organic Rice',
-					'Aged Basmati (2-3 years)',
-				],
-				packaging: 'Custom packaging available',
-			},
 		],
 	},
 	{
@@ -91,11 +82,6 @@ const productCategories = [
 				types: ['Feed Grade', 'Food Grade', 'Popcorn Maize'],
 				packaging: '50kg PP bags, Bulk',
 			},
-			{
-				name: 'Maize Products',
-				types: ['Corn Flour', 'Corn Starch', 'Corn Grits'],
-				packaging: '25kg, 50kg bags',
-			},
 		],
 	},
 	{
@@ -127,15 +113,9 @@ const productCategories = [
 		varieties: [
 			{
 				name: 'Whole Spices',
-				types: ['Cumin Seeds', 'Coriander Seeds', 'Turmeric Fingers', 'Black Pepper'],
+				types: ['Coriander Seeds', 'Turmeric Fingers', 'Chili'],
 				packaging: '10kg, 25kg bags',
 			},
-			{
-				name: 'Ground Spices',
-				types: ['Turmeric Powder', 'Chili Powder', 'Coriander Powder', 'Cumin Powder'],
-				packaging: '1kg-25kg packaging',
-			},
-			{ name: 'Blends', types: ['Garam Masala', 'Curry Powder', 'Biryani Masala'], packaging: 'Custom formulations' },
 		],
 	},
 ];
@@ -196,17 +176,14 @@ export default function ProductsSection() {
 							viewport={{ once: true }}
 							transition={{ delay: i * 0.05 }}
 							onClick={() => setActiveCategory(category.id)}
-							className={`relative overflow-hidden flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 ${
-								activeCategory === category.id
+							className={`relative overflow-hidden flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 ${activeCategory === category.id
 									? 'ring-2 ring-orange shadow-glow'
 									: 'hover:ring-1 hover:ring-orange/50'
-							}`}
+								}`}
 							style={{
-								backgroundImage: `linear-gradient(rgba(0, 0, 0, ${
-									activeCategory === category.id ? '0.3' : '0.5'
-								}), rgba(0, 0, 0, ${
-									activeCategory === category.id ? '0.3' : '0.5'
-								})), url(${category.image})`,
+								backgroundImage: `linear-gradient(rgba(0, 0, 0, ${activeCategory === category.id ? '0.3' : '0.5'
+									}), rgba(0, 0, 0, ${activeCategory === category.id ? '0.3' : '0.5'
+									})), url(${category.image})`,
 								backgroundSize: 'cover',
 								backgroundPosition: 'center',
 							}}
