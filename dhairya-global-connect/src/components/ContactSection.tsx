@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, MapPin, Clock, CheckCircle, MessageCircle } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, CheckCircle, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
@@ -175,21 +175,7 @@ export default function ContactSection() {
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="flex items-center gap-4 p-4 glass-card"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gradient-navy flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <div className="text-muted-foreground text-sm font-ui">Business Hours</div>
-                  <div className="text-foreground font-medium">Mon-Sat: 9AM - 6PM IST</div>
-                </div>
-              </motion.div>
+
             </div>
 
             {/* WhatsApp CTA */}

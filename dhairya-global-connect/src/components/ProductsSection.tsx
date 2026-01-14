@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Package, Wheat, Droplets, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 // Import product images
 import riceImg from '@/assets/jasmine-rice-or-uncooked-rice-in-burlap-sack-on-wooden-table-with-the-rice-field-background-photo.jpg';
@@ -124,6 +126,73 @@ export default function ProductsSection() {
 	const [activeCategory, setActiveCategory] = useState('rice');
 	const activeProduct = productCategories.find(p => p.id === activeCategory);
 
+	const handleDownloadCatalog = () => {
+		const doc = new jsPDF();
+
+		// Title
+		doc.setFontSize(22);
+		doc.setTextColor(255, 107, 0); // Orange color
+		doc.text('GROWORA - Product Catalog', 14, 20);
+
+		doc.setFontSize(12);
+		doc.setTextColor(100);
+		doc.text('Premium Agricultural Commodities from India', 14, 28);
+		doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 34);
+
+		let yPos = 45;
+
+		productCategories.forEach((category) => {
+			// Section Header
+			doc.setFontSize(16);
+			doc.setTextColor(0);
+			doc.text(category.name, 14, yPos);
+
+			doc.setFontSize(10);
+			doc.setTextColor(100);
+			doc.text(category.description, 14, yPos + 6);
+
+			yPos += 12;
+
+			// Prepare table data
+			const tableData = category.varieties.map(v => [
+				v.name,
+				v.types.join('\n'),
+				v.packaging
+			]);
+
+			autoTable(doc, {
+				startY: yPos,
+				head: [['Variety', 'Types', 'Packaging']],
+				body: tableData,
+				theme: 'grid',
+				headStyles: { fillColor: [255, 107, 0], textColor: 255 }, // Orange header
+				styles: { fontSize: 10, cellPadding: 3 },
+				columnStyles: {
+					0: { fontStyle: 'bold', cellWidth: 40 },
+					1: { cellWidth: 80 },
+					2: { cellWidth: 'auto' }
+				},
+				didDrawPage: (data) => {
+					// Add footer on each page
+					doc.setFontSize(8);
+					doc.setTextColor(150);
+					doc.text('www.groworaindia.com', data.settings.margin.left, doc.internal.pageSize.height - 10);
+				}
+			});
+
+			// Update yPos for next category
+			yPos = (doc as any).lastAutoTable.finalY + 15;
+
+			// Check if we need a new page
+			if (yPos > 250) {
+				doc.addPage();
+				yPos = 20;
+			}
+		});
+
+		doc.save('GROWORA_Catalog.pdf');
+	};
+
 	return (
 		<section id="products" className="py-24 lg:py-32 bg-background relative overflow-hidden">
 			{/* Background decoration */}
@@ -177,8 +246,8 @@ export default function ProductsSection() {
 							transition={{ delay: i * 0.05 }}
 							onClick={() => setActiveCategory(category.id)}
 							className={`relative overflow-hidden flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 ${activeCategory === category.id
-									? 'ring-2 ring-orange shadow-glow'
-									: 'hover:ring-1 hover:ring-orange/50'
+								? 'ring-2 ring-orange shadow-glow'
+								: 'hover:ring-1 hover:ring-orange/50'
 								}`}
 							style={{
 								backgroundImage: `linear-gradient(rgba(0, 0, 0, ${activeCategory === category.id ? '0.3' : '0.5'
@@ -275,12 +344,7 @@ export default function ProductsSection() {
 								variant="outline"
 								size="lg"
 								className="group"
-								onClick={() => {
-									const link = document.createElement('a');
-									link.href = '/catalog.pdf'; // Path to the catalog file
-									link.download = 'Catalog.pdf';
-									link.click();
-								}}
+								onClick={handleDownloadCatalog}
 							>
 								Download Catalog
 							</Button>
