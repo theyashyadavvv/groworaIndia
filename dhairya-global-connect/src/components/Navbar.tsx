@@ -75,9 +75,12 @@ export default function Navbar() {
                 variant="hero"
                 size="default"
                 className="group"
+                asChild
               >
-                <Globe className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                Get Quote
+                <a href="#contact">
+                  <Globe className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                  Get Quote
+                </a>
               </Button>
             </motion.div>
           </div>
@@ -117,9 +120,11 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <Button variant="hero" size="lg" className="w-full mt-4">
-                <Globe className="w-4 h-4 mr-2" />
-                Get Quote
+              <Button variant="hero" size="lg" className="w-full mt-4" asChild>
+                <a href="#contact" onClick={() => setIsOpen(false)}>
+                  <Globe className="w-4 h-4 mr-2" />
+                  Get Quote
+                </a>
               </Button>
             </div>
           </motion.div>
