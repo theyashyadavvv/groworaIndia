@@ -62,14 +62,14 @@ export default function Footer() {
             <div className="space-y-3">
               <a href="tel:+919967514905" className="flex items-center gap-3 text-primary-foreground/80 hover:text-orange transition-colors">
                 <Phone className="w-4 h-4" />
-                <span className="font-body text-sm">+91 7068683737 / +91 9967514905</span>
+                <span className="font-body text-sm">+91 9967514905</span>
               </a>
               <div className="flex items-start gap-3 text-primary-foreground/80">
                 <Mail className="w-4 h-4 mt-0.5" />
                 <div className="flex flex-col gap-1">
                   <a href="mailto:info@groworaindia.com" className="font-body text-sm hover:text-orange transition-colors">info@groworaindia.com</a>
                   <a href="mailto:info@groworaindia.com" className="font-body text-sm hover:text-orange transition-colors">dhairya@groworaindia.com</a>
-                  <a href="mailto:info@groworaindia.com" className="font-body text-sm hover:text-orange transition-colors">nimesh@groworaindia.com</a>
+
                 </div>
               </div>
             </div>

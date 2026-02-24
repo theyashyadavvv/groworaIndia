@@ -150,7 +150,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-muted-foreground text-sm font-ui">Call Us</div>
-                  <div className="text-foreground font-medium">+91 7068683737</div>
+
                   <div className="text-foreground font-medium">+91 9967514905</div>
                 </div>
               </motion.a>
@@ -170,7 +170,7 @@ export default function ContactSection() {
                   <div className="flex flex-col gap-1">
                     <a href="mailto:info@groworaindia.com" className="text-foreground font-medium hover:text-orange transition-colors">info@groworaindia.com</a>
                     <a href="mailto:info@groworaindia.com" className="text-foreground font-medium hover:text-orange transition-colors">dhairya@groworaindia.com</a>
-                    <a href="mailto:info@groworaindia.com" className="text-foreground font-medium hover:text-orange transition-colors">nimesh@groworaindia.com</a>
+
                   </div>
                 </div>
               </motion.div>
